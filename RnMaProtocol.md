@@ -224,3 +224,21 @@ The Search Bar:
 ```
 
 Extra: Refactoring your Code:
+
+- remove hardcoded html and generate via js
+  - next, prev button
+  - pagination
+  - search bar
+- call component functions and return elements:
+  - createButton, createPagination, createSearchBar
+- use extra input parameter onClick or onSubmit in components
+- use create function in index.js to generate UI components
+- append the created components at the right place in HTML
+
+Positive Feedback from CJ so far:
+
+- Lot of different commits from all users in the group
+
+- util folder good structure
+
+- states changing with let -> put all vars beforehand in the states.js
