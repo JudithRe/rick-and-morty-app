@@ -12,16 +12,14 @@ const nextButton = document.querySelector('[data-js="button-next"]');
 export const pagination = document.querySelector('[data-js="pagination"]');
 
 // States
-
 export let maxPage = 42;
 export let searchQuery = "";
 export let page = 1;
 
-//fetch character data and render
-render(`https://rickandmortyapi.com/api/character/?page=${page}`);
+// Render the Page
+render();
 
-pagination.textContent = `${page}/${maxPage}`;
-
+// Add Event Listeners to Buttons and Search Bar
 nextButton.addEventListener("click", () => {
   increasePageCount();
 });
@@ -40,6 +38,21 @@ searchBar.addEventListener("submit", (event) => {
   searchBar.query.focus();
 });
 
+// Functions for Rendering and Page Count
+async function render() {
+  try {
+    cardContainer.innerHTML = [];
+    maxPage = await fetchInfo();
+    const allCharacters = await fetchCharacters();
+    allCharacters.forEach((character) => {
+      createCharacterCard(character);
+    });
+    pagination.textContent = `${page} / ${maxPage}`;
+  } catch (error) {
+    console.log("error: ", error);
+  }
+}
+
 function increasePageCount() {
   if (page >= 1 && page < maxPage) {
     page++;
@@ -51,19 +64,5 @@ function decreasePageCount() {
   if (page > 1 && page <= maxPage) {
     page--;
     render();
-  }
-}
-
-async function render() {
-  try {
-    cardContainer.innerHTML = [];
-    maxPage = await fetchInfo();
-    const allCharacters = await fetchCharacters();
-    allCharacters.forEach((character) => {
-      createCharacterCard(character);
-    });
-    pagination.textContent = `${page}/${maxPage}`;
-  } catch (error) {
-    console.log("error: ", error);
   }
 }
