@@ -29,3 +29,14 @@ nextButton.addEventListener("click", () => {
 prevButton.addEventListener("click", () => {
   decreasePageCount();
 });
+searchBar.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const data = Object.fromEntries(new FormData(event.target));
+  const searchQuery = data.query;
+
+  const searchUrl = `${apiUrl}&name=${searchQuery}`;
+  render(searchUrl);
+
+  searchBar.reset();
+  searchBar.query.focus();
+});
