@@ -3,7 +3,7 @@ export const cardContainer = document.querySelector(
 );
 
 export function createCharacterCard(card) {
-  console.log("test: ", card);
+  // console.log("test: ", card);
   // data.forEach((card) => {
   const newCard = document.createElement("li");
   newCard.classList.add("card");

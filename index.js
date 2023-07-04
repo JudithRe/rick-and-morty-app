@@ -1,4 +1,10 @@
 import { render } from "./utils/fetchData.js";
+import {
+  increasePageCount,
+  decreasePageCount,
+} from "./components/nav-pagination/nav-pagination.js";
+import { page } from "./utils/states.js";
+import { maxPage } from "./utils/states.js";
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
@@ -10,17 +16,16 @@ const prevButton = document.querySelector('[data-js="button-prev"]');
 const nextButton = document.querySelector('[data-js="button-next"]');
 const pagination = document.querySelector('[data-js="pagination"]');
 
-// States
-const maxPage = 1;
-const page = 1;
-const searchQuery = "";
+//fetch character data and render
+const apiUrl = `https://rickandmortyapi.com/api/character/?page=1`;
+render(apiUrl);
+
+pagination.textContent = `${page}/${maxPage}`;
 
 nextButton.addEventListener("click", () => {
-  pageNumber = pageNumber + 1;
-  render(apiUrl);
+  increasePageCount();
 });
 
-//fetch character data and render
-let pageNumber = 1;
-let apiUrl = `https://rickandmortyapi.com/api/character/?page=${pageNumber}`;
-render(apiUrl);
+prevButton.addEventListener("click", () => {
+  decreasePageCount();
+});

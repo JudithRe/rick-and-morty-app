@@ -4,7 +4,7 @@ async function fetchCharacters(apiUrl) {
   const response = await fetch(apiUrl);
   const JSON = await response.json();
   const data = await JSON.results;
-  console.log(data);
+  //   console.log(data);
   return data;
 }
 
