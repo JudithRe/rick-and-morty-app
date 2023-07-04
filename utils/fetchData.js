@@ -1,21 +1,19 @@
-import { createCharacterCard, cardContainer } from "../components/card/card.js";
+import { page, searchQuery } from "../index.js";
 
-async function fetchCharacters(apiUrl) {
-  const response = await fetch(apiUrl);
+export async function fetchCharacters() {
+  const response = await fetch(
+    `https://rickandmortyapi.com/api/character/?page=${page}&name=${searchQuery}`
+  );
   const JSON = await response.json();
   const data = await JSON.results;
-  //   console.log(data);
   return data;
 }
 
-export async function render(apiUrl) {
-  try {
-    cardContainer.innerHTML = [];
-    const allCharacters = await fetchCharacters(apiUrl);
-    allCharacters.forEach((character) => {
-      createCharacterCard(character);
-    });
-  } catch (error) {
-    console.log("error: ", error);
-  }
+export async function fetchInfo() {
+  const response = await fetch(
+    `https://rickandmortyapi.com/api/character/?page=${page}&name=${searchQuery}`
+  );
+  const JSON = await response.json();
+  const data = await JSON.info.pages;
+  return data;
 }
