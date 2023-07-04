@@ -1,3 +1,5 @@
+import { render } from "./utils/fetchData.js";
+
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
   '[data-js="search-bar-container"]'
@@ -13,4 +15,12 @@ const maxPage = 1;
 const page = 1;
 const searchQuery = "";
 
-// test test
+nextButton.addEventListener("click", () => {
+  pageNumber = pageNumber + 1;
+  render(apiUrl);
+});
+
+//fetch character data and render
+let pageNumber = 1;
+let apiUrl = `https://rickandmortyapi.com/api/character/?page=${pageNumber}`;
+render(apiUrl);
