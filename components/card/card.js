@@ -1,10 +1,13 @@
-const cardContainer = document.querySelector('[data-js="card-container"]');
+export const cardContainer = document.querySelector(
+  '[data-js="card-container"]'
+);
 
-export function createCharacterCard(data) {
-  data.forEach((card) => {
-    const newCard = document.createElement("li");
-    newCard.classList.add("card");
-    newCard.innerHTML = `
+export function createCharacterCard(card) {
+  console.log("test: ", card);
+  // data.forEach((card) => {
+  const newCard = document.createElement("li");
+  newCard.classList.add("card");
+  newCard.innerHTML = `
  <div class="card__image-container">
       <img
         class="card__image"
@@ -21,10 +24,11 @@ export function createCharacterCard(data) {
         <dt class="card__info-title">Type</dt>
         <dd class="card__info-description">${card.type}</dd>
         <dt class="card__info-title">Occurrences</dt>
-        <dd class="card__info-description">${card.occurrences}</dd>
+        <dd class="card__info-description">${card.episode.length}</dd>
       </dl>
     </div>`;
 
-    cardContainer.append(newCard);
-  });
+  cardContainer.append(newCard);
+
+  // });
 }
