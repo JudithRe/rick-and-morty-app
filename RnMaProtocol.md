@@ -20,7 +20,7 @@ Character Card Component:
     whole team is working on it
     > Note: Where to find all the infomation of the character objects you will recieve from the api?
 
-card.js
+components/card/card.js
 
 ```js
 export const cardContainer = document.querySelector(
@@ -70,7 +70,7 @@ Fetch the Data:
 - cardContainer is emptied every time new characters fetch - innerHTML=''
 - call function inside index.js
 
-fetchdata.js
+utils/fetchdata.js
 
 ```js
 import { createCharacterCard, cardContainer } from "../components/card/card.js";
@@ -138,7 +138,7 @@ Pagination:
   - fetchCharacters function is called
 - update pagination display each time characters are fetched to show the current page index and the current max page, for example: ( 04/20 )
 
-components/nav-pagination.js
+components/nav-pagination/nav-pagination.js
 
 ```js
 import { render } from "../../utils/fetchData.js";
@@ -218,5 +218,9 @@ The Search Bar:
 - modify fetch URL by adding encoded attribute name: append &name=<searchQuery> to the url.
 - trigger the function fetchCharacters when submit
   > Note: how the page and max page index might have to change when you start searching for only subsets of all characters.
+
+```js
+
+```
 
 Extra: Refactoring your Code:
