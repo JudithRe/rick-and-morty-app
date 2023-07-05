@@ -1,4 +1,4 @@
-import { fetchCharacters, fetchInfo } from "./utils/fetchData.js";
+import { fetchCharacters } from "./utils/fetchData.js";
 import { createCharacterCard } from "./components/card/card.js";
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
@@ -38,12 +38,13 @@ searchBar.addEventListener("submit", (event) => {
   searchBar.query.focus();
 });
 
-// Functions for Rendering and Page Count
+// Functions for Rendering and increasing Page Count
 async function render() {
   try {
     cardContainer.innerHTML = [];
-    maxPage = await fetchInfo();
-    const allCharacters = await fetchCharacters();
+    const data = await fetchCharacters();
+    maxPage = data.info.pages;
+    const allCharacters = data.results;
     allCharacters.forEach((character) => {
       createCharacterCard(character);
     });
