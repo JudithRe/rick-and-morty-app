@@ -38,7 +38,7 @@ searchBar.addEventListener("submit", (event) => {
   searchBar.query.focus();
 });
 
-// Functions for Rendering and Page Count
+// Functions for Rendering and increasing Page Count
 async function render() {
   try {
     cardContainer.innerHTML = [];
