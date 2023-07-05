@@ -9,3 +9,10 @@
 .button:hover {
   background-color: var(--color-nemo);
 }
+
+.navigation__pagination {
+  display: grid;
+  place-items: center;
+  background-color: var(--color-water-10);
+  font-size: 1.2rem;
+}
