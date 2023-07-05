@@ -1,20 +1,24 @@
 import { fetchCharacters } from "./utils/fetchData.js";
 import { createCharacterCard } from "./components/card/card.js";
-
-const cardContainer = document.querySelector('[data-js="card-container"]');
-const searchBarContainer = document.querySelector(
-  '[data-js="search-bar-container"]'
-);
-const searchBar = document.querySelector('[data-js="search-bar"]');
-const navigation = document.querySelector('[data-js="navigation"]');
-const prevButton = document.querySelector('[data-js="button-prev"]');
-const nextButton = document.querySelector('[data-js="button-next"]');
-export const pagination = document.querySelector('[data-js="pagination"]');
+import { createNavigation } from "./components/nav-bar/nav-bar.js";
 
 // States
 export let maxPage = 42;
 export let searchQuery = "";
 export let page = 1;
+
+//Create Page Elements
+createNavigation();
+
+// Get Elements for Render
+const cardContainer = document.querySelector('[data-js="card-container"]');
+// const searchBarContainer = document.querySelector(
+//   '[data-js="search-bar-container"]'
+// );
+const searchBar = document.querySelector('[data-js="search-bar"]');
+const prevButton = document.querySelector('[data-js="button-prev"]');
+const nextButton = document.querySelector('[data-js="button-next"]');
+const pagination = document.querySelector('[data-js="pagination"]');
 
 // Render the Page
 render();
